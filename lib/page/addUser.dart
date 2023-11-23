@@ -15,8 +15,13 @@ class _AddUsersPageState extends State<AddUsersPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Center(child: Text("Page add users")),
-        centerTitle: true,
+        title: const Text("Page add users"),
+        //centerTitle: true,
+        actions: [
+          IconButton(onPressed: (){
+            print("Click add");
+          }, icon: const Icon(Icons.add))
+        ],
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection("users").snapshots(),
@@ -42,17 +47,37 @@ class _AddUsersPageState extends State<AddUsersPage> {
                   //   ),
                   // );
 
+                  // return Padding(
+                  //   padding: const EdgeInsets.only(top: 8.0),
+                  //   child: Container(
+                  //     margin: const EdgeInsets.symmetric(horizontal: 8),
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.grey,
+                  //       borderRadius: BorderRadius.circular(12),
+                  //     ),
+                  //     child: ListTile(
+                  //       title: Text("User name: ${users.username}"),
+                  //       subtitle: Text("Gmail: ${users.gmail}"),
+                  //     ),
+                  //   ),
+                  // );
+
                   return Padding(
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 8),
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: Colors.grey,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(12)
                       ),
-                      child: ListTile(
-                        title: Text("User name: ${users.username}"),
-                        subtitle: Text("Gmail: ${users.gmail}"),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("User name: ${users.username}"),
+                          Text("Gmail: ${users.gmail}"),
+                          Text("Address: ${users.address?.street} ${users.address?.city}"),
+                        ],
                       ),
                     ),
                   );
