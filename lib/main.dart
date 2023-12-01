@@ -1,12 +1,9 @@
-import 'package:config/page/addUser.dart';
 import 'package:config/page/login/login.dart';
 import 'package:config/page/splash/splash.dart';
 import 'package:config/provider/auth_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'page/myHomePage.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,6 +1,6 @@
 
 import 'package:config/page/login/login.dart';
-import 'package:config/page/myHomePage.dart';
+import 'package:config/page/root/root_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,13 +24,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   onChecking() async {
     await Future.delayed(const Duration(seconds: 1));
-    FirebaseAuth.instance.authStateChanges().listen((user) async {
+    FirebaseAuth.instance.authStateChanges().listen((user) {
       if (user != null) {
-        await Provider.of(context,listen: false).getUser(user.uid);
-        //MyPageRoute.goToReplace(context, RootPage(user.uid));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const RootPage() ));
+        //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const RootPage()), (Route<dynamic> route) => false);
       } else {
-        //MyPageRoute.goToReplace(context, const LoginPage());
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage() ));
+        //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const LoginPage()), (Route<dynamic> route) => false);
       }
     });
   }

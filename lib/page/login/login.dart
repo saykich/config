@@ -1,10 +1,12 @@
 import 'package:config/page/login/signUp.dart';
+import 'package:config/page/root/root_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 
+import '../../api/user_api.dart';
 import '../../provider/auth_provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -198,9 +200,9 @@ class _LoginPageState extends State<LoginPage> {
               child: MaterialButton(
                 onPressed: (){
                   if (_formKey.currentState!.validate()) {
-                    // UserApiService().signIn(email.text.trim(), password.text.trim());
-                    // Navigator.pushReplacement(context,
-                    //     MaterialPageRoute(builder: (_)=> BabyPage()));
+                    UserAPI().signIn(email.text.trim(), password.text.trim());
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> const RootPage()));
+                    //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const RootPage()), (Route<dynamic> route) => false);
                   }
                 },
                 color: Colors.red[400],
@@ -209,62 +211,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
             ),
-            //const SizedBox(height: 20),
-            // const Text("Or Login with"),
-            // const SizedBox(height: 20),
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 80,right: 80),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //     children: [
-            //       InkWell(
-            //         borderRadius: BorderRadius.circular(25),
-            //         child: Container(
-            //           width: 40,
-            //           height: 40,
-            //           decoration: const BoxDecoration(shape: BoxShape.circle),
-            //           child: Image.network(
-            //             'https://th.bing.com/th/id/OIP.FQYyu80e7eHzc3lbL4BzBQHaHY?w=184&h=183&c=7&r=0&o=5&pid=1.7',
-            //             width: 40,
-            //             height: 40,
-            //           ),
-            //         ),
-            //         onTap: () => (){},
-            //       ),
-            //       InkWell(
-            //         child: Container(
-            //           width: 40,
-            //           height: 40,
-            //           decoration: const BoxDecoration(shape: BoxShape.circle),
-            //           child: Image.network('https://th.bing.com/th/id/OIP.YPM8IZ98U35wLNzG0a73CgHaHa?w=186&h=186&c=7&r=0&o=5&pid=1.7',
-            //             width: 40,
-            //             height: 40,
-            //           ),
-            //         ),
-            //         onTap: () => (){},
-            //       ),
-            //       InkWell(
-            //         child: Container(
-            //           width: 40,
-            //           height: 40,
-            //           decoration: const BoxDecoration(shape: BoxShape.circle),
-            //           child: Image.network(
-            //             'https://cdn-icons-png.flaticon.com/512/174/174857.png',
-            //             width: 40,
-            //             height: 40,
-            //           ),
-            //         ),
-            //         onTap: () => (){},
-            //       ),
-            //
-            //       // Icon(Icons.facebook),
-            //       // Icon(Icons.messenger),
-            //       // Icon(Icons.facebook)
-            //     ],
-            //   ),
-            // ),
-            // const SizedBox(height: 10),
-            //const Text("Don't have account?"),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

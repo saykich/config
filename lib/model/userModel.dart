@@ -1,40 +1,22 @@
 
 class UserModel{
   String uid;
-  String username;
-  String gmail;
-  Address? address;
+  String email;
+  DateTime dob;
+  String note;
 
-  UserModel({required this.uid,required this.username,required this.gmail, this.address});
+  UserModel({required this.uid,required this.email,required this.dob,required this.note});
 
   factory UserModel.fromJson(Map<String,dynamic> json){
-    return UserModel(uid: json["uid"], username: json["username"], gmail: json["gmail"], address: Address.fromJson(json["address"]));
+    return UserModel(uid: json["uid"], email: json["email"], dob: json["dob"], note: json["note"]);
   }
 
   Map<String, dynamic> toJson() {
     final data = <String,dynamic>{};
     data["uid"]= uid;
-    data["username"] = username;
-    data["gmail"]= gmail;
+    data["email"]= email;
+    data["dob"]= dob;
+    data["note"]= note;
     return data;
   }
-}
-
-class Address{
-  String? street;
-  String? city;
-
-  Address({this.street, this.city});
-
-  factory Address.fromJson(Map<String, dynamic> json){
-    return Address(street: json["street"], city: json["city"]);
-  }
-
-  Map<String, dynamic> toJson() {
-    final data = <String,dynamic>{};
-    data["street"] = street;
-    data["city"] = city;
-    return data;
-  }
-
 }
