@@ -7,6 +7,7 @@ import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 
 import '../../api/user_api.dart';
+import '../../model/userModel.dart';
 import '../../provider/auth_provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -201,8 +202,8 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: (){
                   if (_formKey.currentState!.validate()) {
                     UserAPI().signIn(email.text.trim(), password.text.trim());
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> const RootPage()));
-                    //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const RootPage()), (Route<dynamic> route) => false);
+                    //Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> RootPage()));
+                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const RootPage("cZo3VT5VbjQfrXJSSwMiuN3uJya2")), (Route<dynamic> route) => false);
                   }
                 },
                 color: Colors.red[400],

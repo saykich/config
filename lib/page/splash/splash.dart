@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 1));
     FirebaseAuth.instance.authStateChanges().listen((user) {
       if (user != null) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const RootPage() ));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RootPage(user.uid) ));
         //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const RootPage()), (Route<dynamic> route) => false);
       } else {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage() ));
